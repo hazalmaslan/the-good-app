@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NewComponent from './NewComponent'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello, World!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    value: 0,
+  }
+
+  increment = () => {
+    this.setState({value: this.state.value + 1})
+  }
+
+  decrement = () => {
+    this.setState({value: this.state.value - 1})
+  }
+
+  render() {
+    return (
+      <div>
+        <div>{this.state.value}</div>
+        <NewComponent name="Hazal"/>
+        <button onClick={this.increment}>Increment</button>
+        <button onClick={this.decrement}>Decrement</button>
+      </div>
+    )
+  }
 }
 
 export default App;
